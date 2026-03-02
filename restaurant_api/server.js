@@ -53,6 +53,22 @@ app.get("/api/foods", (req, res) => {
   });
 });
 
+// GET ONE (BY ID)
+app.get("/api/foods/:id", (req, res) => {
+  const { id } = req.params; // Get the ID from the URL
+  const sql = "SELECT * FROM foods WHERE id = ?";
+
+  db.query(sql, [id], (err, result) => {
+    if (err) return res.status(500).json({ error: err.message });
+
+    // Check if the food item actually exists
+    if (result.length === 0) {
+      return res.status(404).json({ message: "Food item not found" });
+    }
+
+    res.json(result[0]); // Return only the first item (the object) instead of an array
+  });
+});
 // POST (CREATE)
 app.post("/api/foods", upload.single("image"), (req, res) => {
   const { name, price, category, description } = req.body;

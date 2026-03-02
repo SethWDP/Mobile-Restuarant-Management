@@ -123,7 +123,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           source: ImageSource.gallery,
                         );
                         if (pickedFile != null) {
-                          // This updates the UI inside the dialog
                           setDialogState(
                             () => _imageFile = File(pickedFile.path),
                           );
@@ -173,16 +172,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     // --- TEXT INPUTS ---
                     TextField(
                       controller: nameController,
+                      // CHANGED: Added KhmerFont style
+                      style: const TextStyle(fontFamily: 'KhmerFont'),
                       decoration: const InputDecoration(labelText: "Dish Name"),
                     ),
                     TextField(
                       controller: descController,
+                      // CHANGED: Added KhmerFont style
+                      style: const TextStyle(fontFamily: 'KhmerFont'),
                       decoration: const InputDecoration(
                         labelText: "Description",
                       ),
                     ),
                     TextField(
                       controller: priceController,
+                      // CHANGED: Added KhmerFont style (helpful for Khmer numerals)
+                      style: const TextStyle(fontFamily: 'KhmerFont'),
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         labelText: "Price (\$)",
@@ -207,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
               actions: [
                 TextButton(
                   onPressed: () {
-                    _imageFile = null; // Reset image on cancel
+                    _imageFile = null;
                     Navigator.pop(dialogContext);
                   },
                   child: const Text("Cancel"),
@@ -309,6 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w800,
+                              fontFamily: 'KhmerFont',
                             ),
                           ),
                         ),
@@ -344,6 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 13,
                         height: 1.25,
                         color: Colors.black87,
+                        fontFamily: 'KhmerFont',
                       ),
                     ),
                     const SizedBox(height: 8),

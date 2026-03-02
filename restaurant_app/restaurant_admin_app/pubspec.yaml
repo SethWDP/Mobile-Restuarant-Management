@@ -30,11 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # ADD THIS: For Khmer language support
+  flutter_localizations:
+    sdk: flutter
   http: ^1.6.0
-
   image_picker: ^1.2.1
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
@@ -56,7 +56,15 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  assets:
+    - assets/fonts/
+  # ADD THIS section (Make sure the spacing is exactly like this)
+  fonts:
+    - family: KhmerFont
+      fonts:
+        - asset: assets/fonts/KantumruyPro-Italic-VariableFont_wght.ttf
+        - asset: assets/fonts/KantumruyPro-VariableFont_wght.ttf
+          weight: 700
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

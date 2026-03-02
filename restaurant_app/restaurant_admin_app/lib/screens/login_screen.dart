@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final data = jsonDecode(response.body);
 
       if (response.statusCode == 200 && data['success'] == true) {
-        _showSnackBar("Login ជោគជ័យ!", color: Colors.green);
+        _showSnackBar("Login Success!", color: Colors.green);
 
         Navigator.pushReplacement(
           context,
@@ -46,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _showSnackBar(data['message'] ?? "ឈ្មោះ ឬលេខសម្ងាត់មិនត្រឹមត្រូវ");
       }
     } catch (e) {
-      _showSnackBar("មិនអាចភ្ជាប់ទៅកាន់ Server បានទេ: $e");
+      _showSnackBar("Cannot connect to  Server : $e");
     } finally {
       setState(() => _isLoading = false);
     }
@@ -74,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.restaurant, size: 80, color: Colors.orange),
+              const Icon(Icons.restaurant, size: 90, color: Colors.red),
               const SizedBox(height: 20),
               const Text(
                 "Admin Login",
@@ -105,12 +104,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   : ElevatedButton(
                       onPressed: _login,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
+                        backgroundColor: Colors.red,
                         minimumSize: const Size(double.infinity, 50),
                       ),
                       child: const Text(
-                        "ចូលប្រើប្រាស់",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
             ],
