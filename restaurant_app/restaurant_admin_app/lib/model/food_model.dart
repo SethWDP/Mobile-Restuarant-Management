@@ -3,7 +3,7 @@ class Food {
   final String name;
   final String description;
   final double price;
-  final String imageUrl; // This is the variable name in Dart
+  final String imageUrl;
   final String category;
 
   Food({

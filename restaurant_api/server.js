@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 1. FIX: Ensure uploads directory exists properly
+//  uploads directory exists properly
 const uploadDir = "./uploads";
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.use("/uploads", express.static("uploads"));
-
+// connect to database
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",

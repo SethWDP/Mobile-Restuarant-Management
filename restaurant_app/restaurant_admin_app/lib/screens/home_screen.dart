@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final ImagePicker _picker = ImagePicker();
   File? _imageFile;
   final String baseUrl = "http://10.0.2.2:3000/api/foods";
-
   @override
   void initState() {
     super.initState();
